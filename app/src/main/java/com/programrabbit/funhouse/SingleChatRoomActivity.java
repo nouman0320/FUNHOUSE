@@ -13,6 +13,8 @@ import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.inputmethod.InputMethodManager;
+import android.widget.EditText;
 import android.widget.TextView;
 
 
@@ -32,6 +34,8 @@ public class SingleChatRoomActivity extends AppCompatActivity {
     ConstraintLayout space;
     ConstraintLayout cl_message;
     ConstraintLayout space2;
+
+    EditText et_message;
 
 
     TextView tv_start;
@@ -84,6 +88,8 @@ public class SingleChatRoomActivity extends AppCompatActivity {
         space = findViewById(R.id.space);
         space2 = findViewById(R.id.space_msg);
         cl_message = findViewById(R.id.cl_message);
+        et_message = findViewById(R.id.et_message);
+
 
         tv_start = findViewById(R.id.tv_start);
         tv_start.setOnClickListener(new View.OnClickListener() {
@@ -107,11 +113,15 @@ public class SingleChatRoomActivity extends AppCompatActivity {
             space2.setVisibility(View.GONE);
             space.setVisibility(View.VISIBLE);
             tv_start.setText("Start a Conversation.");
+            InputMethodManager imm = (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
+            imm.hideSoftInputFromWindow(et_message.getWindowToken(), 0);
         } else {
             cl_message.setVisibility(View.VISIBLE);
             space2.setVisibility(View.VISIBLE);
             space.setVisibility(View.GONE);
             tv_start.setText("Hide Message Box.");
+            InputMethodManager imm = (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
+            imm.showSoftInput(et_message, InputMethodManager.SHOW_IMPLICIT);
         }
     }
 }
