@@ -29,8 +29,8 @@ public class LoginActivity extends AppCompatActivity {
     Button btn_signup;
     Button btn_facebook;
 
-    EditText et_username;
-    EditText et_password;
+    EditText et_username2;
+    EditText et_password2;
 
 
     @Override
@@ -58,6 +58,9 @@ public class LoginActivity extends AppCompatActivity {
         btn_signup = findViewById(R.id.btn_signup);
         btn_facebook = findViewById(R.id.btn_fb);
 
+        et_username2 = findViewById(R.id.et_username2);
+        et_password2 = findViewById(R.id.et_password2);
+
 
         tv_forgot_pass.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -73,8 +76,9 @@ public class LoginActivity extends AppCompatActivity {
                 //startActivity(i);
 
 
-                String username = et_username.getText().toString();
-                String password = et_password.getText().toString();
+
+                final String username = et_username2.getText().toString();
+                final String password = et_password2.getText().toString();
 
                 int val = 0;
 
@@ -95,14 +99,22 @@ public class LoginActivity extends AppCompatActivity {
                 if(val>0)
                     return;
 
+                final Context mContext = LoginActivity.this;
 
-                XMPP myxmpp = new XMPP(getApplicationContext());
+                new Thread(new Runnable() {
+                    public void run() {
 
-                try{
-                    myxmpp.loginUser(username, password);
-                }catch (Exception e){
-                    Log.e("ERROR", e.toString());
-                }
+                        final XMPP myxmpp = new XMPP(mContext);
+                        //Log.d("test", "test");
+                        try{
+                            myxmpp.loginUser(username, password);
+                        }catch (Exception e){
+                            Log.e("ERROR", e.toString());
+                        }
+                    }
+                }).start();
+
+
 
             }
         });

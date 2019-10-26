@@ -18,8 +18,8 @@
         android:textAllCaps="false"
         android:textColor="@color/white"
         android:textSize="18sp"
-        app:layout_constraintStart_toStartOf="@+id/et_password"
-        app:layout_constraintTop_toBottomOf="@+id/et_password" />
+        app:layout_constraintStart_toStartOf="@+id/et_password2"
+        app:layout_constraintTop_toBottomOf="@+id/et_password2" />
 
     <Button
         android:id="@+id/btn_signup"
@@ -33,11 +33,11 @@
         android:textAllCaps="false"
         android:textColor="@color/white"
         android:textSize="18sp"
-        app:layout_constraintEnd_toEndOf="@+id/et_password"
-        app:layout_constraintTop_toBottomOf="@+id/et_password" />
+        app:layout_constraintEnd_toEndOf="@+id/et_password2"
+        app:layout_constraintTop_toBottomOf="@+id/et_password2" />
 
     <EditText
-        android:id="@+id/et_username"
+        android:id="@+id/et_username2"
         android:layout_width="match_parent"
         android:layout_height="60dp"
         android:layout_marginLeft="40dp"
@@ -55,7 +55,7 @@
 
 
     <EditText
-        android:id="@+id/et_password"
+        android:id="@+id/et_password2"
         android:layout_width="match_parent"
         android:layout_height="60dp"
         android:layout_marginLeft="40dp"
@@ -70,7 +70,7 @@
         android:text=""
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/et_username" />
+        app:layout_constraintTop_toBottomOf="@+id/et_username2" />
 
     <ImageView
         android:id="@+id/imageView3"
@@ -78,9 +78,9 @@
         android:layout_height="24dp"
         android:layout_marginEnd="16dp"
         android:layout_marginRight="16dp"
-        app:layout_constraintBottom_toBottomOf="@+id/et_password"
-        app:layout_constraintEnd_toEndOf="@+id/et_password"
-        app:layout_constraintTop_toTopOf="@+id/et_password"
+        app:layout_constraintBottom_toBottomOf="@+id/et_password2"
+        app:layout_constraintEnd_toEndOf="@+id/et_password2"
+        app:layout_constraintTop_toTopOf="@+id/et_password2"
         app:srcCompat="@drawable/ic_key"
         tools:ignore="VectorDrawableCompat" />
 
@@ -101,9 +101,9 @@
         android:layout_height="24dp"
         android:layout_marginEnd="16dp"
         android:layout_marginRight="16dp"
-        app:layout_constraintBottom_toBottomOf="@+id/et_username"
-        app:layout_constraintEnd_toEndOf="@+id/et_username"
-        app:layout_constraintTop_toTopOf="@+id/et_username"
+        app:layout_constraintBottom_toBottomOf="@+id/et_username2"
+        app:layout_constraintEnd_toEndOf="@+id/et_username2"
+        app:layout_constraintTop_toTopOf="@+id/et_username2"
         app:srcCompat="@drawable/ic_login_square_arrow_button_outline"
         tools:ignore="VectorDrawableCompat" />
 
@@ -139,7 +139,7 @@
         android:text="Forgot Password?"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/et_password" />
+        app:layout_constraintTop_toBottomOf="@+id/et_password2" />
 
     <Button
         android:id="@+id/btn_fb"

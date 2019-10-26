@@ -31,8 +31,8 @@ public class SignupActivity extends AppCompatActivity {
     TextView tv_login;
 
 
-    EditText et_username;
-    EditText et_password;
+    EditText et_username2;
+    EditText et_password2;
     EditText et_email;
     EditText et_phone;
 
@@ -56,9 +56,9 @@ public class SignupActivity extends AppCompatActivity {
         tv_brand.setTypeface(lu_b);
         tv_login.setTypeface(lu_b);
 
-        et_username = findViewById(R.id.et_username);
+        et_username2 = findViewById(R.id.et_username2);
         et_email = findViewById(R.id.et_email);
-        et_password = findViewById(R.id.et_password);
+        et_password2 = findViewById(R.id.et_password2);
         et_phone = findViewById(R.id.et_mobile);
 
 
@@ -67,59 +67,60 @@ public class SignupActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
+                final String username = et_username2.getText().toString();
+                final String password = et_password2.getText().toString();
+                final String email = et_email.getText().toString();
+                final String phone = et_phone.getText().toString();
+
+
+                int val = 0;
+
+                if(TextUtils.isEmpty(username)){
+                    Toast.makeText(getApplicationContext(), "Username must not be empty!",Toast.LENGTH_SHORT).show();
+                    val++;
+                }
+                if(password.length()<=5){
+                    Toast.makeText(getApplicationContext(), "Password must be greater than 5 digits",Toast.LENGTH_SHORT).show();
+                    val++;
+                }
+
+                if(TextUtils.isEmpty(email)){
+                    Toast.makeText(getApplicationContext(), "Email must not be empty!",Toast.LENGTH_SHORT).show();
+                    val++;
+                }
+
+                if(TextUtils.isEmpty(phone)){
+                    Toast.makeText(getApplicationContext(), "Phone number must not be empty!",Toast.LENGTH_SHORT).show();
+                    val++;
+                }
+
+                if(!isEmailValid(email)){
+                    Toast.makeText(getApplicationContext(), "Email must be valid",Toast.LENGTH_SHORT).show();
+                    val++;
+                }
+
+                if(username.length()>30){
+                    Toast.makeText(getApplicationContext(), "Username is very long!",Toast.LENGTH_SHORT).show();
+                    val++;
+                }
+
+                if(val>0)
+                    return;
+
+                final Context mContext = SignupActivity.this;
+
 
                 new Thread(new Runnable() {
                     public void run() {
+                        final XMPP myxmpp = new XMPP(mContext);
                         //Log.d("test", "test");
-                        XMPP myxmpp = new XMPP(getApplicationContext());
                         try {
-
-                            String username = et_username.getText().toString();
-                            String password = et_password.getText().toString();
-                            String email = et_email.getText().toString();
-                            String phone = et_phone.getText().toString();
-
-
-                            int val = 0;
-
-                            if(TextUtils.isEmpty(username)){
-                                Toast.makeText(getApplicationContext(), "Username must not be empty!",Toast.LENGTH_SHORT).show();
-                                val++;
-                            }
-                            if(password.length()<=5){
-                                Toast.makeText(getApplicationContext(), "Password must be greater than 5 digits",Toast.LENGTH_SHORT).show();
-                                val++;
-                            }
-
-                            if(TextUtils.isEmpty(email)){
-                                Toast.makeText(getApplicationContext(), "Email must not be empty!",Toast.LENGTH_SHORT).show();
-                                val++;
-                            }
-
-                            if(TextUtils.isEmpty(phone)){
-                                Toast.makeText(getApplicationContext(), "Phone number must not be empty!",Toast.LENGTH_SHORT).show();
-                                val++;
-                            }
-
-                            if(!isEmailValid(email)){
-                                Toast.makeText(getApplicationContext(), "Email must be valid",Toast.LENGTH_SHORT).show();
-                                val++;
-                            }
-
-                            if(username.length()>30){
-                                Toast.makeText(getApplicationContext(), "Username is very long!",Toast.LENGTH_SHORT).show();
-                                val++;
-                            }
-
-                            if(val>0)
-                                return;
-
-
                             myxmpp.registerUser(username, password, email, phone);
                         } catch (Exception e) {
-                            Log.e("test", e.toString());
-                            Toast.makeText(getApplicationContext(), "Unable to register new user",Toast.LENGTH_SHORT).show();
-                        }
+                            Log.e("test", "SIGNUP ACITIVTY |" + e.toString());
+
+                            //Toast.makeText(mContext, "Unable to register new user",Toast.LENGTH_SHORT).show();
+                           }
                     }
                 }).start();
 
