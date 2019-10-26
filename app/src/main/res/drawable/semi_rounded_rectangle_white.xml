@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layer-list xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <!-- Bottom 2dp Shadow -->
+    <item>
+        <shape  android:shape="rectangle">
+
+            <solid android:color="#C7C6C6" />
+            <corners
+                android:bottomLeftRadius="25dp"
+                android:topRightRadius="25dp"
+                >
+            </corners>
+
+        </shape>
+    </item>
+
+    <!-- White Top color -->
+    <item android:bottom="8px">
+
+        <shape xmlns:android="http://schemas.android.com/apk/res/android"
+            android:shape="rectangle" >
+
+            <!-- View background color -->
+            <solid
+                android:color="#E9E9E9" >
+            </solid>
+
+            <!-- The radius makes the corners rounded -->
+            <corners
+                android:bottomLeftRadius="25dp"
+                android:topRightRadius="25dp"
+                >
+            </corners>
+        </shape>
+
+    </item>
+
+
+</layer-list>
