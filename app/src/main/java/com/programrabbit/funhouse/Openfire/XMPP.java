@@ -77,7 +77,6 @@ public class XMPP {
                 //Log.i("test", "inside register user");
             }
         } catch (Exception e) {
-            //TODO : Case 409 or Message conflict is the case of username exist handle the case
             Toast.makeText(mContext, "Username already taken!", Toast.LENGTH_SHORT).show();
             //.printStackTrace(e);
         }
