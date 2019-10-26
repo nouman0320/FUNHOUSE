@@ -135,15 +135,267 @@
             android:id="@+id/toolbar_title" />
     </androidx.appcompat.widget.Toolbar>
 
-    <androidx.constraintlayout.widget.ConstraintLayout
+    <LinearLayout
         android:id="@+id/cl_users"
         android:layout_width="match_parent"
-        android:layout_height="60dp"
+        android:layout_height="70dp"
         android:background="@drawable/custom_gradient_bg"
         app:layout_constraintTop_toBottomOf="@+id/chat_toolbar"
-        tools:layout_editor_absoluteX="143dp">
+        tools:layout_editor_absoluteX="143dp"
+        android:weightSum="5"
+        >
 
-    </androidx.constraintlayout.widget.ConstraintLayout>
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/cl_user_1"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1">
+
+            <ImageView
+                android:id="@+id/iv_microphone_user_1"
+                android:layout_width="10dp"
+                android:layout_height="10dp"
+                app:layout_constraintBottom_toBottomOf="@+id/tv_user_1"
+                app:layout_constraintEnd_toStartOf="@+id/tv_user_1"
+                app:layout_constraintTop_toTopOf="@+id/tv_user_1"
+                app:srcCompat="@drawable/ic_microphone" />
+
+            <TextView
+                android:id="@+id/tv_user_1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Steve"
+                android:textSize="10sp"
+                app:layout_constraintEnd_toEndOf="@+id/civ_user_1"
+                app:layout_constraintStart_toStartOf="@+id/civ_user_1"
+                app:layout_constraintTop_toBottomOf="@+id/civ_user_1" />
+
+            <de.hdodenhof.circleimageview.CircleImageView
+                android:id="@+id/civ_user_1"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:layout_marginTop="8dp"
+                android:src="@drawable/default_profile"
+                app:civ_border_color="@color/colorPrimaryDark"
+                app:civ_border_width="1dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <ImageView
+                android:id="@+id/iv_dot_user_1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="4dp"
+                app:layout_constraintEnd_toEndOf="@+id/civ_user_1"
+                app:layout_constraintTop_toTopOf="@+id/civ_user_1"
+                app:srcCompat="@drawable/ic_online" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/cl_user_2"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1">
+
+            <ImageView
+                android:id="@+id/iv_microphone_user_2"
+                android:layout_width="10dp"
+                android:layout_height="10dp"
+                android:visibility="gone"
+                app:layout_constraintBottom_toBottomOf="@+id/tv_user_2"
+                app:layout_constraintEnd_toStartOf="@+id/tv_user_2"
+                app:layout_constraintTop_toTopOf="@+id/tv_user_2"
+                app:srcCompat="@drawable/ic_microphone" />
+
+            <TextView
+                android:id="@+id/tv_user_2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Jenifer"
+                android:textSize="10sp"
+                app:layout_constraintEnd_toEndOf="@+id/civ_user_2"
+                app:layout_constraintStart_toStartOf="@+id/civ_user_2"
+                app:layout_constraintTop_toBottomOf="@+id/civ_user_2" />
+
+            <de.hdodenhof.circleimageview.CircleImageView
+                android:id="@+id/civ_user_2"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:layout_marginTop="8dp"
+                android:src="@drawable/default_profile"
+                app:civ_border_color="@color/colorPrimaryDark"
+                app:civ_border_width="1dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <ImageView
+                android:id="@+id/iv_dot_user_2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="4dp"
+                app:layout_constraintEnd_toEndOf="@+id/civ_user_2"
+                app:layout_constraintTop_toTopOf="@+id/civ_user_2"
+                app:srcCompat="@drawable/ic_online" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/cl_user_3"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1">
+
+            <ImageView
+                android:id="@+id/iv_microphone_user_3"
+                android:layout_width="10dp"
+                android:layout_height="10dp"
+                android:visibility="gone"
+                app:layout_constraintBottom_toBottomOf="@+id/tv_user_3"
+                app:layout_constraintEnd_toStartOf="@+id/tv_user_3"
+                app:layout_constraintTop_toTopOf="@+id/tv_user_3"
+                app:srcCompat="@drawable/ic_microphone" />
+
+            <TextView
+                android:id="@+id/tv_user_3"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Joana"
+                android:textSize="10sp"
+                app:layout_constraintEnd_toEndOf="@+id/civ_user_3"
+                app:layout_constraintStart_toStartOf="@+id/civ_user_3"
+                app:layout_constraintTop_toBottomOf="@+id/civ_user_3" />
+
+            <de.hdodenhof.circleimageview.CircleImageView
+                android:id="@+id/civ_user_3"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:layout_marginTop="8dp"
+                android:src="@drawable/default_profile"
+                app:civ_border_color="@color/colorPrimaryDark"
+                app:civ_border_width="1dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <ImageView
+                android:id="@+id/iv_dot_user_3"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="4dp"
+                app:layout_constraintEnd_toEndOf="@+id/civ_user_3"
+                app:layout_constraintTop_toTopOf="@+id/civ_user_3"
+                app:srcCompat="@drawable/ic_online" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/cl_user_4"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1">
+
+            <ImageView
+                android:id="@+id/iv_microphone_user_4"
+                android:layout_width="10dp"
+                android:layout_height="10dp"
+                android:visibility="gone"
+                app:layout_constraintBottom_toBottomOf="@+id/tv_user_4"
+                app:layout_constraintEnd_toStartOf="@+id/tv_user_4"
+                app:layout_constraintTop_toTopOf="@+id/tv_user_4"
+                app:srcCompat="@drawable/ic_microphone" />
+
+            <TextView
+                android:id="@+id/tv_user_4"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Laura"
+                android:textSize="10sp"
+                app:layout_constraintEnd_toEndOf="@+id/civ_user_4"
+                app:layout_constraintStart_toStartOf="@+id/civ_user_4"
+                app:layout_constraintTop_toBottomOf="@+id/civ_user_4" />
+
+            <de.hdodenhof.circleimageview.CircleImageView
+                android:id="@+id/civ_user_4"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:layout_marginTop="8dp"
+                android:src="@drawable/default_profile"
+                app:civ_border_color="@color/colorPrimaryDark"
+                app:civ_border_width="1dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <ImageView
+                android:id="@+id/iv_dot_user_4"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="4dp"
+                android:visibility="gone"
+                app:layout_constraintEnd_toEndOf="@+id/civ_user_4"
+                app:layout_constraintTop_toTopOf="@+id/civ_user_4"
+                app:srcCompat="@drawable/ic_online" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/cl_user_5"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1">
+
+            <ImageView
+                android:id="@+id/iv_microphone_user_5"
+                android:layout_width="10dp"
+                android:layout_height="10dp"
+                android:visibility="gone"
+                app:layout_constraintBottom_toBottomOf="@+id/tv_user_5"
+                app:layout_constraintEnd_toStartOf="@+id/tv_user_5"
+                app:layout_constraintTop_toTopOf="@+id/tv_user_5"
+                app:srcCompat="@drawable/ic_microphone" />
+
+            <TextView
+                android:id="@+id/tv_user_5"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="John"
+                android:textSize="10sp"
+                app:layout_constraintEnd_toEndOf="@+id/civ_user_5"
+                app:layout_constraintStart_toStartOf="@+id/civ_user_5"
+                app:layout_constraintTop_toBottomOf="@+id/civ_user_5" />
+
+            <de.hdodenhof.circleimageview.CircleImageView
+                android:id="@+id/civ_user_5"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:layout_marginTop="8dp"
+                android:src="@drawable/default_profile"
+                app:civ_border_color="@color/colorPrimaryDark"
+                app:civ_border_width="1dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <ImageView
+                android:id="@+id/iv_dot_user_5"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="4dp"
+                app:layout_constraintEnd_toEndOf="@+id/civ_user_5"
+                app:layout_constraintTop_toTopOf="@+id/civ_user_5"
+                app:srcCompat="@drawable/ic_online" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </LinearLayout>
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/cl_message"
@@ -167,5 +419,16 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/cl_chat"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toBottomOf="@+id/space"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/cl_users">
+
     </androidx.constraintlayout.widget.ConstraintLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>
