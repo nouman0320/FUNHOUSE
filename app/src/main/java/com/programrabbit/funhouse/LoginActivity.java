@@ -7,9 +7,15 @@ import android.content.Context;
 import android.content.Intent;
 import android.graphics.Typeface;
 import android.os.Bundle;
+import android.text.TextUtils;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
+
+import com.programrabbit.funhouse.Openfire.XMPP;
 
 public class LoginActivity extends AppCompatActivity {
 
@@ -22,6 +28,9 @@ public class LoginActivity extends AppCompatActivity {
     Button btn_login;
     Button btn_signup;
     Button btn_facebook;
+
+    EditText et_username;
+    EditText et_password;
 
 
     @Override
@@ -60,8 +69,41 @@ public class LoginActivity extends AppCompatActivity {
         btn_login.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent i = new Intent(LoginActivity.this, TestMenuActivity.class);
-                startActivity(i);
+                //Intent i = new Intent(LoginActivity.this, TestMenuActivity.class);
+                //startActivity(i);
+
+
+                String username = et_username.getText().toString();
+                String password = et_password.getText().toString();
+
+                int val = 0;
+
+                if(TextUtils.isEmpty(username)){
+                    Toast.makeText(getApplicationContext(), "Username must not be empty!",Toast.LENGTH_SHORT).show();
+                    val++;
+                }
+                if(password.length()<=5){
+                    Toast.makeText(getApplicationContext(), "Password must be greater than 5 digits",Toast.LENGTH_SHORT).show();
+                    val++;
+                }
+
+                if(username.length()>30){
+                    Toast.makeText(getApplicationContext(), "Username is very long!",Toast.LENGTH_SHORT).show();
+                    val++;
+                }
+
+                if(val>0)
+                    return;
+
+
+                XMPP myxmpp = new XMPP(getApplicationContext());
+
+                try{
+                    myxmpp.loginUser(username, password);
+                }catch (Exception e){
+                    Log.e("ERROR", e.toString());
+                }
+
             }
         });
 
