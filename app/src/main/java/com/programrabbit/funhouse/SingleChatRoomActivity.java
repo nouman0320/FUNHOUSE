@@ -3,19 +3,31 @@ package com.programrabbit.funhouse;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.constraintlayout.widget.ConstraintLayout;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 import uk.co.chrisjenx.calligraphy.CalligraphyContextWrapper;
 
 import android.content.Context;
 import android.graphics.Typeface;
 import android.opengl.Visibility;
 import android.os.Bundle;
+import android.text.TextUtils;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.inputmethod.InputMethodManager;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
+
+import com.programrabbit.funhouse.Adapter.ChatMessageListAdapter;
+import com.programrabbit.funhouse.Model.ChatMessage;
+import com.programrabbit.funhouse.Model.User;
+
+import java.util.ArrayList;
+import java.util.Date;
+import java.util.List;
 
 
 public class SingleChatRoomActivity extends AppCompatActivity {
@@ -39,6 +51,13 @@ public class SingleChatRoomActivity extends AppCompatActivity {
 
 
     TextView tv_start;
+
+    Button btn_send;
+
+    private RecyclerView mMessageRecycler;
+    private ChatMessageListAdapter mMessageAdapter;
+
+    ArrayList<ChatMessage> messageList;
 
     @Override
     protected void attachBaseContext(Context newBase) {
@@ -99,10 +118,36 @@ public class SingleChatRoomActivity extends AppCompatActivity {
             }
         });
 
-
-
-
         enableMessageBox(false);
+
+
+        messageList = new ArrayList<>();
+        messageList.add(new ChatMessage(new User("Laura"), "Hello Steve :) How are you doing???", new Date()));
+        messageList.add(new ChatMessage(new User("Steve"), "Pretty good, what about you?", new Date()));
+        messageList.add(new ChatMessage(new User("Laura"), "Great, thanks for asking", new Date()));
+        messageList.add(new ChatMessage(new User("Laura"), "Are you free atm?", new Date()));
+
+
+        mMessageRecycler = findViewById(R.id.recyclerview_messages);
+        mMessageAdapter = new ChatMessageListAdapter(this, messageList);
+        mMessageRecycler.setLayoutManager(new LinearLayoutManager(this));
+        mMessageRecycler.setAdapter(mMessageAdapter);
+
+
+        btn_send = findViewById(R.id.btn_send);
+
+        btn_send.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+             if(isMessageInProgress && !TextUtils.isEmpty(et_message.getText())){
+                 messageList.add(new ChatMessage(new User("Steve"), et_message.getText().toString(), new Date()));
+                 et_message.setText("");
+                 enableMessageBox(false);
+                 et_message.clearFocus();
+                 mMessageRecycler.scrollToPosition(messageList.size() - 1);
+             }
+            }
+        });
     }
 
     void enableMessageBox(boolean val){
