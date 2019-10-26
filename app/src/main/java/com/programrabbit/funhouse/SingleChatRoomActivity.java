@@ -99,6 +99,13 @@ public class SingleChatRoomActivity extends AppCompatActivity {
         chat_tb.setNavigationIcon(R.drawable.ic_left_arrow);
         chat_tb.inflateMenu(R.menu.chatroom_menu);
 
+        chat_tb.setNavigationOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                onBackPressed();
+            }
+        });
+
         tv_title = findViewById(R.id.toolbar_title);
         tv_title.setText("Pakistan");
         tv_title.setTypeface(lu_b);
@@ -122,6 +129,7 @@ public class SingleChatRoomActivity extends AppCompatActivity {
 
 
         messageList = new ArrayList<>();
+        messageList.add(new ChatMessage(new User("%WELCOME_MSG%"), "Welcome msg", new Date()));
         messageList.add(new ChatMessage(new User("Laura"), "Hello Steve :) How are you doing???", new Date()));
         messageList.add(new ChatMessage(new User("Steve"), "Pretty good, what about you?", new Date()));
         messageList.add(new ChatMessage(new User("Laura"), "Great, thanks for asking", new Date()));

@@ -142,7 +142,7 @@
         app:layout_constraintTop_toBottomOf="@+id/et_password" />
 
     <Button
-        android:id="@+id/button2"
+        android:id="@+id/btn_fb"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"

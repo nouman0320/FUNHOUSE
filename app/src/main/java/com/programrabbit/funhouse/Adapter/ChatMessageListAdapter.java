@@ -22,6 +22,7 @@ public class ChatMessageListAdapter extends RecyclerView.Adapter {
 
     private static final int VIEW_TYPE_MESSAGE_SENT = 1;
     private static final int VIEW_TYPE_MESSAGE_RECEIVED = 2;
+    private static final int VIEW_TYPE_MESSAGE_WELCOME = 3;
 
     private Context mContext;
     private ArrayList<ChatMessage> mMessageList;
@@ -45,8 +46,10 @@ public class ChatMessageListAdapter extends RecyclerView.Adapter {
         // for testing
         String currentUsername = "Steve";
         //
-
-        if (message.getUser().getUsername().equals(currentUsername)) {
+        if(message.getUser().getUsername().equals("%WELCOME_MSG%")){
+            return VIEW_TYPE_MESSAGE_WELCOME;
+        }
+        else if (message.getUser().getUsername().equals(currentUsername)) {
             // If the current user is the sender of the message
             return VIEW_TYPE_MESSAGE_SENT;
         } else {
@@ -69,6 +72,10 @@ public class ChatMessageListAdapter extends RecyclerView.Adapter {
             view = LayoutInflater.from(parent.getContext())
                     .inflate(R.layout.chat_message_received, parent, false);
             return new ReceivedMessageHolder(view);
+        } else if(viewType == VIEW_TYPE_MESSAGE_WELCOME) {
+            view = LayoutInflater.from(parent.getContext())
+                    .inflate(R.layout.chat_room_welcome_msg, parent, false);
+            return new WelcomeMessageHolder(view);
         }
 
         return null;
@@ -86,6 +93,21 @@ public class ChatMessageListAdapter extends RecyclerView.Adapter {
                 break;
             case VIEW_TYPE_MESSAGE_RECEIVED:
                 ((ReceivedMessageHolder) holder).bind(message);
+                break;
+            case VIEW_TYPE_MESSAGE_WELCOME:
+                ((WelcomeMessageHolder) holder).bind(message);
+        }
+    }
+
+    private class WelcomeMessageHolder extends RecyclerView.ViewHolder {
+        TextView messageText, timeText, nameText;
+
+        WelcomeMessageHolder(View itemView) {
+            super(itemView);
+        }
+
+        void bind(ChatMessage message) {
+
         }
     }
 
